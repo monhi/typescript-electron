@@ -1,0 +1,19 @@
+{
+  "name": "typescript-electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "build": "tsc",
+	"start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^24.0.0"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "typescript": "^5.0.4"
+  }
+}
