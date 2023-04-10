@@ -11,6 +11,11 @@ src code of typescript files are in `./ts` folder
 It uses webview tag to show web links.
 
 
+# How to run the project
+* Run `npm install` to install necessary packages.
+* Run `npm run build` to compile the ts files into js files.
+* Run `npm run start` to run the project.
+
 
 # Main link
 I use the following link to create this project:
