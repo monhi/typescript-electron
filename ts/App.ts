@@ -1,4 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import Main from './Main';
 
-Main.main(app, BrowserWindow);
+	let mainInstance : Main;
+		mainInstance = new Main();
+		mainInstance.main(app, BrowserWindow);

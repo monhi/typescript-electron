@@ -1,51 +1,68 @@
 import { BrowserWindow } from 'electron';
 
 export default class Main {
-    static mainWindow: Electron.BrowserWindow;
-    static application: Electron.App;
-    static BrowserWindow;
-    private static onWindowAllClosed() {
-        if (process.platform !== 'darwin') {
-            Main.application.quit();
+    public mainWindow: Electron.BrowserWindow;
+    public application: Electron.App;
+    public myBrowserWindow: typeof BrowserWindow;
+    public onWindowAllClosed() 
+	{
+        if ( process.platform !== 'darwin' )
+		{
+            this.application.quit();
         }
     }
 
-    private static onClose() {
+    public onClose() {
         // Dereference the window object. 
-        Main.mainWindow = null;
+        this.mainWindow = null;
     }
 
-    private static onReady() {
-        Main.mainWindow = new Main.BrowserWindow(
+    public onReady() 
+	{
+        this.mainWindow = new BrowserWindow(
 		{ 
 			width: 800, 
 			height: 600,
-			webPreferences: {
-			  nativeWindowOpen: true,
-			  devTools: true, // false if you want to remove dev tools access for the user
-			  contextIsolation: true,
-			  //enableRemoteModule: true, // required for print function [removed since Electron 12, uses https://github.com/electron/remote]
-			  webviewTag: true, // https://www.electronjs.org/docs/api/webview-tag,
-			  //preload: path.join(__dirname, "../preload.js"), // required for print function
+			fullscreen: true,
+			//frame: false,
+			webPreferences: 
+			{
+				devTools: true, // false if you want to remove dev tools access for the user		
+				plugins: true,
+				experimentalFeatures: true,
+				allowRunningInsecureContent: true,
+				webviewTag: true,
+				nodeIntegration: true,
+				contextIsolation: false          
+				//path.join(__dirname, "../preload.js"), // required for print function			  
 			}
-		}
+		});
 		
-		
-		
-		);
-        Main.mainWindow
-            .loadURL('file://' + __dirname + '/index.html');
-        Main.mainWindow.on('closed', Main.onClose);
+        this.mainWindow.loadURL('file://' + __dirname + '/index.html');
+        this.mainWindow.on('closed', this.onClose.bind(this));
     }
+	
+	public OnWebContentsCreated(webContentsCreatedEvent, contents) {
+	  if (contents.getType() === 'webview') {
+		contents.on('new-window', function (newWindowEvent, url) {
+		  console.log('block');
+		  //newWindowEvent.preventDefault();
+		  this.mainWindow.loadURL(url);
+		});
+	  }
+	}	
+	
+	
 
-    static main(app: Electron.App, browserWindow: typeof BrowserWindow) {
+    public main(app: Electron.App, browserWindow: typeof BrowserWindow) {
         // we pass the Electron.App object and the  
         // Electron.BrowserWindow into this function 
         // so this class has no dependencies. This 
         // makes the code easier to write tests for 
-        Main.BrowserWindow = browserWindow;
-        Main.application = app;
-        Main.application.on('window-all-closed', Main.onWindowAllClosed);
-        Main.application.on('ready', Main.onReady);
+        this.myBrowserWindow = browserWindow;
+        this.application = app;
+        this.application.on('window-all-closed', this.onWindowAllClosed.bind(this));
+        this.application.on('ready', this.onReady.bind(this));
+		this.application.on('web-contents-created',this.OnWebContentsCreated.bind(this));
     }
 }
