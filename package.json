@@ -4,8 +4,9 @@
   "description": "",
   "main": "App.js",
   "scripts": {
-    "build": "tsc",
-	"start": "electron ."
+    "build": "tsc && gulp",
+    "start": "electron .",
+	"gulp": "gulp hello"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
   },
   "devDependencies": {
     "@types/electron": "^1.6.10",
+    "gulp": "^4.0.2",
     "typescript": "^5.0.4"
   }
 }

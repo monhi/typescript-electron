@@ -42,9 +42,12 @@ export default class Main {
         this.mainWindow.on('closed', this.onClose.bind(this));
     }
 	
-	public OnWebContentsCreated(webContentsCreatedEvent, contents) {
-	  if (contents.getType() === 'webview') {
-		contents.on('new-window', function (newWindowEvent, url) {
+	public OnWebContentsCreated(webContentsCreatedEvent, contents) 
+	{
+	  if (contents.getType() === 'webview') 
+	  {
+		contents.on('new-window', function (newWindowEvent, url) 
+		{
 		  console.log('block');
 		  //newWindowEvent.preventDefault();
 		  this.mainWindow.loadURL(url);
