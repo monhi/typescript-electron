@@ -4,11 +4,10 @@
   "description": "",
   "main": "App.js",
   "scripts": {
-    "build": "tsc && gulp",
-    "start": "electron .",
-	"gulp": "gulp hello"
+    "build": "tsc && gulp uglify ",
+    "start": "electron ."    
   },
-  "author": "",
+  "author": "Monhi",
   "license": "ISC",
   "dependencies": {
     "electron": "^24.0.0"
@@ -16,6 +15,7 @@
   "devDependencies": {
     "@types/electron": "^1.6.10",
     "gulp": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
     "typescript": "^5.0.4"
   }
 }

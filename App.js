@@ -1,8 +1,1 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var electron_1 = require("electron");
-var Main_1 = require("./Main");
-var mainInstance;
-mainInstance = new Main_1.default();
-mainInstance.main(electron_1.app, electron_1.BrowserWindow);
-//# sourceMappingURL=App.js.map
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var electron_1=require("electron"),Main_1=require("./Main"),mainInstance=new Main_1.default;mainInstance.main(electron_1.app,electron_1.BrowserWindow);

@@ -1,5 +1,7 @@
-var gulp = require('gulp');
+const gulp 		= require('gulp');
+const uglify	= require('gulp-uglify');
 
+/*
 gulp.task('hello',()=>{
 	
 	return new Promise(function(resolve, reject) 
@@ -9,5 +11,14 @@ gulp.task('hello',()=>{
 	});
   
 });
+*/
 
-gulp.task('default', gulp.series('hello'));
+gulp.task('uglify',()=>{
+	return new Promise((resolve, reject)=>{
+		gulp.src('ts/out/*.js').pipe(uglify()).pipe(gulp.dest('.'));	
+		resolve();
+	})
+	
+})
+
+//gulp.task('default', gulp.series('uglify'));
