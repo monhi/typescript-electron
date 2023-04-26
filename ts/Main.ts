@@ -39,6 +39,7 @@ export default class Main {
 		});
 		
         this.mainWindow.loadURL('file://' + __dirname + '/index.html');
+		console.log('file://' + __dirname + '/index.html');
         this.mainWindow.on('closed', this.onClose.bind(this));
     }
 	

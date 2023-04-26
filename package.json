@@ -2,9 +2,9 @@
   "name": "typescript-electron",
   "version": "1.0.0",
   "description": "",
-  "main": "App.js",
+  "main": "./dist/App.js",
   "scripts": {
-    "build": "tsc && gulp uglify ",
+    "build": "tsc && gulp",
     "start": "electron ."    
   },
   "author": "Monhi",
