@@ -4,11 +4,14 @@
 This is a simple Electron application based on typescipt.
 I need it to be a boilerplate for other typescript and electron based project.
 
-Now I can develop electron projects based on typescipt language and have better control over them.
+Now I can develop electron projects based on typescipt language and have better control over it.
 
 
-src code of typescript files are in `./ts` folder
-It uses webview tag to show web links.
+
+Source code of typescript files are in `./ts` folder.
+Contents will be copied to ./dist folder after compilation.
+
+I use webview tag to show web links.
 
 
 # How to run the project
